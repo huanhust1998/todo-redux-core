@@ -1,4 +1,6 @@
-export const addTodoAction = {
-  type: "todoList/addTodo",
-  payload: { id: 4, name: "Learn Java", completed: false, priority: "Low" },
+export const addTodo = (data) => {
+  return {
+    type: "todoList/addTodo",
+    payload: data
+  };
 };

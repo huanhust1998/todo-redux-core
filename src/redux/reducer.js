@@ -16,10 +16,7 @@ const rootReducer = (state = initState, action) => {
     case "todoList/addTodo":
       return {
         ...state,
-        todoList: [
-          ...state.todoList,
-          { id: 4, name: "Learn Java", completed: false, priority: "Low" },
-        ],
+        todoList: [...state.todoList, action.payload],
       };
     default:
       return state;
