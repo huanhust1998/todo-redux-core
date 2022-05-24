@@ -4,14 +4,14 @@ import { addTodo } from "../../redux/actions";
 import Todo from "../Todo";
 import { v4 as uuidv4 } from "uuid";
 import { useState } from "react";
-import { todoListSelector } from "../../redux/selector";
+import { todosRemainingSelector } from "../../redux/selector";
 
 export default function TodoList() {
   const dispatch = useDispatch();
   const [todoName, setTodoName] = useState("");
   const [priority, setPriority] = useState("Medium");
 
-  const todoList = useSelector(todoListSelector);
+  const todoList = useSelector(todosRemainingSelector);
   const handleAddButtonClick = () => {
     dispatch(
       addTodo({
@@ -32,7 +32,13 @@ export default function TodoList() {
         <Todo name="Learn Redux" prioriry="Medium" />
         <Todo name="Learn JavaScript" prioriry="Low" /> */}
         {todoList.map((todo) => (
-          <Todo name={todo.name} prioriry={todo.priority} key={todo.id} />
+          <Todo
+            name={todo.name}
+            prioriry={todo.priority}
+            key={todo.id}
+            completed={todo.completed}
+            todoId={todo.id}
+          />
         ))}
       </Col>
       <Col span={24}>
